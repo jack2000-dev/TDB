@@ -36,8 +36,7 @@ For sensitive data:
 
 ## DASF 2.0
 
-[Databricks AI Security Framework 2.0](https://www.databricks.com/blog/announcing-databricks-ai-security-framework-20) — security framework for AI systems. See [Templates → DASF 2.0](../templates/dasf2.md) for summary.
-
+[Databricks AI Security Framework 2.0](https://www.databricks.com/blog/announcing-databricks-ai-security-framework-20) — security framework for AI systems.
 ## Choose by task
 
 | Task | Recommended tool |
