@@ -1,5 +1,126 @@
 # SQL Snippets
 
+## COUNT(*)
+
+The 5 situations where you use `COUNT(*)`.
+
+### 1. Row count -- the baseline health check
+
+```sql
+-- Production use: daily data pipeline check
+-- "Did today's load actually land any rows?"
+
+SELECT COUNT(*) AS row_count
+FROM raw.shopify_orders
+WHERE DATE(created_at) = CURRENT_DATE;
+
+-- If this returns 0 at 9am, your ingestion pipeline is broken.
+```
+
+### 2. Count by group -- the most common analytics pattern
+
+```sql
+-- How many orders did each customer place?
+-- Real use: customer segmentation, loyalty tiers
+
+SELECT
+    customer_id,
+    COUNT(*) AS order_count
+FROM orders
+GROUP BY customer_id
+ORDER BY order_count DESC;
+
+-- Result:
+-- customer_id | order_count
+-- 42          | 14
+-- 99          | 9
+-- 17          | 2
+```
+
+### 3. Filtering groups with HAVING
+
+`WHERE` filters rows before grouping. `HAVING` filters after grouping -- it works on the result of `COUNT(*)`.
+
+```sql
+-- Which customers placed MORE than 5 orders this month?
+-- Real use: VIP identification, churn risk flagging
+
+SELECT
+    customer_id,
+    COUNT(*) AS order_count
+FROM orders
+WHERE DATE_TRUNC('month', created_at) = DATE_TRUNC('month', CURRENT_DATE)
+GROUP BY customer_id
+HAVING COUNT(*) > 5
+ORDER BY order_count DESC;
+```
+
+### 4. Data quality check -- finding duplicates
+
+```sql
+-- Are there duplicate order_ids? There should never be.
+-- Real use: dbt test alternative, pipeline audit
+
+SELECT
+    order_id,
+    COUNT(*) AS occurrences
+FROM orders
+GROUP BY order_id
+HAVING COUNT(*) > 1;
+
+-- If this returns any rows → you have duplicates → data integrity problem.
+```
+
+### 5. EXISTS check via COUNT
+
+```sql
+-- Did this customer place any order in the last 30 days?
+-- Real use: re-engagement email logic, support tooling
+
+SELECT
+    COUNT(*) AS recent_orders
+FROM orders
+WHERE customer_id = 42
+  AND created_at >= CURRENT_DATE - INTERVAL '30 days';
+
+-- If 0 → send re-engagement email.
+-- If > 0 → customer is active, don't spam them.
+```
+
+### Production dbt model using COUNT(*)
+
+A realistic dbt mart model -- the kind that powers an executive dashboard.
+
+- Grain: one row per day per country
+- Powers: ops dashboard, SLA monitoring, finance reporting
+
+```sql
+-- models/mart/fct_daily_order_summary.sql
+
+SELECT
+    DATE_TRUNC('day', o.created_at)      AS order_date,
+    c.country                             AS country,
+
+    COUNT(*)                              AS total_orders,
+    COUNT(DISTINCT o.customer_id)         AS unique_customers,
+    COUNT(o.promo_code)                   AS orders_with_promo,  -- skips NULLs
+    COUNT(*) - COUNT(o.promo_code)        AS orders_without_promo,
+
+    SUM(o.amount)                         AS gross_revenue,
+    ROUND(SUM(o.amount) / COUNT(*), 2)    AS avg_order_value
+
+FROM {{ ref('stg_orders') }}       AS o
+JOIN {{ ref('stg_customers') }}    AS c
+    ON o.customer_id = c.customer_id
+
+WHERE o.status != 'cancelled'
+
+GROUP BY 1, 2
+ORDER BY 1 DESC, 3 DESC
+```
+
+This single model answers: how many orders per day per country, how many used a promo, and what was the average value? `COUNT(*)` is the backbone of every metric.
+
 ## Cohort retention
 
 ```sql

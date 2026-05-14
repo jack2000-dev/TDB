@@ -9,6 +9,7 @@ A searchable wiki for data analysis. DAP (Data Analysis Process), Python, SQL, v
 - :material-map-marker-path: **[DAP — Data Analysis Process](dap/index.md)** — six-phase framework, metrics, A/B testing.
 - :material-language-python: **[Python](python/index.md)** — EDA, pandas, numpy, matplotlib, snippets.
 - :material-database: **[SQL](sql/index.md)** — fundamentals, optimization (`EXPLAIN`), data modeling, snippets.
+- :material-cog: **[Analytics Engineering](analytics-engineering/index.md)** — foundations, data modeling, ELT process, dbt, version control, ADLC.
 - :material-chart-bar: **[Visualization](visualization/index.md)** — chart selection, design principles, dashboard architecture.
 - :material-robot: **[AI for DA](ai-for-da/index.md)** — tools, prompt framework, safety.
 - :material-toolbox: **[Tools](tools/index.md)** — tech stack, spreadsheets, git, comparison tables.

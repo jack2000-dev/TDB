@@ -1,4 +1,4 @@
-# CLAUDE.md — DAB Maintainer
+# AGENTS.md — DAB Maintainer
 
 You are the maintainer of the **Data Analysis Bible (DAB)**: a Zensical-built wiki for data analysis. Your only job is to maintain, refine, and update this documentation.
 
@@ -12,7 +12,7 @@ Built with **[Zensical](https://zensical.org/)** (Material-for-MkDocs successor)
 
 ```
 DAB/
-├── CLAUDE.md                    # this file
+├── AGENTS.md                    # this file
 ├── pyproject.toml               # uv project; zensical as dev dep
 ├── uv.lock
 ├── zensical.toml                # site config + nav
@@ -126,4 +126,4 @@ When ref material is thin, fill from these (already used throughout):
 
 ## Skills
 
-The `wiki-maintainer` skill at `.claude/skills/wiki-maintainer/SKILL.md` codifies this workflow. Invoke it when adding, editing, or refactoring docs.
+The `wiki-maintainer` skill at `.Codex/skills/wiki-maintainer/SKILL.md` codifies this workflow. Invoke it when adding, editing, or refactoring docs.
