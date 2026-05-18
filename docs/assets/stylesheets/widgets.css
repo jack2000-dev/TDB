@@ -31,12 +31,15 @@
   border-color: transparent;
 }
 
-.sx-explorer .sx-stage{ margin: .3rem 0 1rem; }
+.sx-explorer .sx-stage{ margin: .3rem 0 1rem; min-width: 0; }
 .sx-explorer .sx-stage-grid{
-  display:grid; grid-template-columns:1fr 1fr; gap:.6rem; margin-bottom:.4rem;
+  display:grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap:.6rem; margin-bottom:.4rem;
 }
+.sx-explorer .sx-stage-grid > *{ min-width: 0; }
 @media (max-width:540px){
-  .sx-explorer .sx-stage-grid{ grid-template-columns:1fr; }
+  .sx-explorer .sx-stage-grid{ grid-template-columns: minmax(0,1fr); }
 }
 .sx-explorer .sx-sublabel{
   font-family: var(--md-code-font-family, ui-monospace, monospace);
