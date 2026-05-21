@@ -50,3 +50,4 @@ The order SQL **logically** evaluates clauses (different from how you write them
 ## References
 
 - [PostgreSQL Documentation](https://www.postgresql.org/docs/current/)
+- [SQL Best Practices](https://www.metabase.com/learn/sql/working-with-sql/sql-best-practices)
