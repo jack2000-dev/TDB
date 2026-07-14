@@ -1,0 +1,29 @@
+docs/analytics-engineering/data-modeling.md
+  s_dedd32bb224ade::t_2146b4d1b9d059 365
+docs/analytics-engineering/AE-foundation.md
+  s_dedd32bb224ade::t_a9f53c9484434b 27
+AGENTS.md
+  s_dedd32bb224ade::t_198578daf79fc3 129
+pyproject.toml
+  s_dedd32bb224ade::t_9b7269392d2a7f 11
+uv.lock
+  s_dedd32bb224ade::t_0130fbb50af20c 39,50-61,71-122,134,140,142,219,224,231,233-244
+.gitignore
+  s_dedd32bb224ade::t_9b142cef749fd6 22-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "1022c4fe06cd28d075ce2919d049a79f13e6168f",
+  "prompts": {},
+  "sessions": {
+    "s_dedd32bb224ade": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4ed211f0-bd54-44a7-8538-e9d4449e88e9",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
