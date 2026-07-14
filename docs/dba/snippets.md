@@ -1,0 +1,36 @@
+# Practical Snippets
+
+## SQL Server on macOS (Apple Silicon)
+
+**Install:** Recommend `OrbStack` for better Docker performance
+
+```bash
+docker run -e "ACCEPT_EULA=Y" \
+           -e "MSSQL_SA_PASSWORD=Test@12345" \
+           -p 1433:1433 \
+           --name mssql_server \
+           --platform linux/amd64 \
+           -d mcr.microsoft.com/mssql/server:2022-latest
+```
+
+**Use:**
+
+- **Option A:** GUI Tools
+  Download a database client like **DBeaver**, **Azure Data Studio**, or **TablePlus**. Open the tool, create a new **Microsoft SQL Server** connection, and enter these credentials:
+    - **Host:** `localhost` (or `127.0.0.1`)
+    - **Port:** `1433`
+    - **Username:** `sa`
+    - **Password:** `paswordtest1234`
+    - _Note:_ For SQL Server 2022, ensure you check the box for "Trust Server Certificate" (or set `encrypt=false`) in your driver settings if the connection fails.
+- **Option B:** Terminal (CLI)
+  ```bash
+  docker exec -it mssql_server /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P paswordtest1234 -C
+  ```
+  This command will start and run `sqlcmd`.
+
+## References
+
+- [Microsoft Learn: SQL Server Technical Documentation](https://learn.microsoft.com/en-us/sql/sql-server/?view=sql-server-ver17)
+- [Microsoft Learn: Transact-SQL (T-SQL) Reference](https://learn.microsoft.com/en-us/sql/t-sql/language-reference?view=sql-server-ver17)
+- [Luis Llamas: T-SQL Command Cheat Sheet](https://www.luisllamas.es/en/cheatsheet-sql/)
+- [sqlcmd utility documentation](https://learn.microsoft.com/en-us/sql/tools/sqlcmd/sqlcmd-utility?view=sql-server-ver17&tabs=go%2Cwindows-support&pivots=cs1-bash)

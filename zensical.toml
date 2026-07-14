@@ -48,6 +48,14 @@ Copyright &copy; 2026 jack2000-dev
 # Read more: https://zensical.org/docs/setup/navigation/
 nav = [
   { Home = "index.md" },
+  { "Database Administrator" = [
+    { Overview = "dba/index.md" },
+    { Fundamentals = "dba/fundamentals.md" },
+    { "Practical Snippets" = "dba/snippets.md" },
+    { "Case Study" = "dba/case-study.md" },
+    { Glossary = "dba/glossary.md" },
+    { Materials = "dba/materials.md" },
+  ]},
   { "DAP" = [
     { Overview = "dap/index.md" },
     { Ask = "dap/ask.md" },
