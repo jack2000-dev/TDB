@@ -2,7 +2,7 @@
 
 A knowledge base covering four data roles: database administration, data engineering, analytics engineering, and data analysis.
 
-> Live site: <https://jack2000-dev.github.io/DAB/>
+> Live site: <https://jack2000-dev.github.io/TDB/>
 
 ## How it's organized
 
