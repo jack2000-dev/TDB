@@ -10,5 +10,4 @@ Bridging the gap between data engineering and data analysis — building reliabl
 - **[dbt](dbt.md)** — projects, models, seeds, sources, DAG, materialization, philosophy.
 - **[Version Control](vcs.md)** — Git cheatsheet for analytics workflows.
 - **[ADLC](ADLC.md)** — the Analytics Development Lifecycle (plan, develop, test, deploy, operate, discover).
-- **[Glossary](glossary.md)**
 - **[Materials](materials.md)**

@@ -1,10 +1,20 @@
 # CLAUDE.md — TDB Maintainer
 
-You are the maintainer of **The Data Bible (TDB)**: a Zensical-built wiki for data analysis. Your only job is to maintain, refine, and update this documentation.
+You are the maintainer of **The Data Bible (TDB)**: a Zensical-built wiki covering the data career path. Your only job is to maintain, refine, and update this documentation.
 
 ## What this site is
 
-A searchable knowledge base for data analysts. Topics: process (Ask→Act), data cleaning, Python, SQL, visualization, statistics, BI, AI for DA, soft skills, glossary.
+A searchable knowledge base organized by **career role**, not by topic. The tab bar reads **Home · DBA · DE · AE · DA · Resources** — the career progression — and that order lives in `nav` in `zensical.toml`.
+
+| Tab | Folder(s) | Covers |
+|-----|-----------|--------|
+| **Database Administrator** | `docs/dba/` | Indexes, partitioning, replication, views, scalability, OLTP/OLAP |
+| **Data Engineer** | `docs/de/` | ETL/ELT, ingestion, Kafka/Airflow/dbt, pipelines |
+| **Analytics Engineer** | `docs/analytics-engineering/` | Foundations, data modeling, ELT process, dbt, version control, ADLC |
+| **Data Analyst** | `dap/`, `python/`, `sql/`, `visualization/`, `ai-for-da/`, `tools/`, `soft-skills/` | Ask→Act process, cleaning, Python, SQL, viz, AI for DA, soft skills |
+| **Resources** | `docs/resources/`, `docs/glossary.md`, `docs/templates/` | Unified glossary, templates, cheatsheets, books, datasets |
+
+"TDB" is a **display name only** — the repo slug, `site_url`, and `repo_url` stay `DAB`.
 
 Built with **[Zensical](https://zensical.org/)** (Material-for-MkDocs successor) + **uv** for Python deps. Hosted on GitHub Pages from `main` via `.github/workflows/docs.yml`.
 
@@ -13,24 +23,43 @@ Built with **[Zensical](https://zensical.org/)** (Material-for-MkDocs successor)
 ```
 TDB/
 ├── CLAUDE.md                    # this file
+├── AGENTS.md                    # identical twin — keep the two in sync
 ├── pyproject.toml               # uv project; zensical as dev dep
 ├── uv.lock
-├── zensical.toml                # site config + nav
+├── zensical.toml                # site config + nav (role tab order lives here)
 ├── .github/workflows/docs.yml   # build & deploy to GitHub Pages
-└── docs/                        # all content (~40 markdown files)
-    ├── index.md
-    ├── glossary.md
-    ├── dap/                     # Ask, Prepare, Process, Analyze, Share, Act
-    ├── python/
-    ├── sql/
-    ├── visualization/
-    ├── analytics-engineering/   # AE foundations, data modeling, ELT, dbt, VCS, ADLC
-    ├── ai-for-da/
-    ├── tools/
-    ├── templates/               # DAF, DASF 2.0
-    ├── soft-skills/
-    └── resources/               # books, tutorials, datasets, practice, misc
+└── docs/
+    ├── index.md                 # Home — role quick-nav
+    ├── glossary.md              # THE glossary: single, unified, all roles
+    ├── dba/                     # role tab — five-page template
+    ├── de/                      # role tab — five-page template
+    ├── analytics-engineering/   # role tab — AE foundations, data modeling, ELT, dbt, VCS, ADLC
+    ├── dap/                     # DA — Ask, Prepare, Process, Analyze, Share, Act
+    ├── python/                  # DA
+    ├── sql/                     # DA
+    ├── visualization/           # DA
+    ├── ai-for-da/               # DA
+    ├── tools/                   # DA
+    ├── soft-skills/             # DA
+    ├── templates/               # Resources — DAF, DASF 2.0
+    └── resources/               # Resources — books, tutorials, datasets, cheatsheets
 ```
+
+The DA folders sit at `docs/` top level but are re-nested under the **Data Analyst** tab by `nav` alone — no file moves, no URL changes. Don't "tidy" them into a `docs/da/` folder.
+
+## Role section template
+
+`dba/` and `de/` follow a canonical five-page shape. Reuse it for any new role tab:
+
+| Page | File | Notes |
+|------|------|-------|
+| Overview | `index.md` | Role description + `## Pages` list of relative bold links. No `## References`. |
+| Fundamentals | `fundamentals.md` | Core concepts as `##` subheadings. |
+| Practical Snippets | `snippets.md` | Language-tagged fenced code blocks. |
+| Case Study | `case-study.md` | Situation / problems / solutions. |
+| Materials | `materials.md` | Tools, community, reads. |
+
+There is **no per-role glossary page** — see [Glossary](#glossary). AE intentionally runs deeper than the template (six content pages); don't flatten it.
 
 ## Workflow commands
 
@@ -44,7 +73,7 @@ After any content change, run `uv run zensical build --clean`. Zero issues = shi
 
 ## Editing rules
 
-1. **Use the existing structure.** Don't add top-level sections without asking. To add a sub-page, also update `nav` in `zensical.toml`.
+1. **Use the existing structure.** The five role tabs are the structure — don't add top-level tabs without asking. To add a sub-page, also update `nav` in `zensical.toml`.
 2. **Every new page ends with `## References`** linking authoritative sources (official docs > peer-reviewed > textbooks > reputable blogs > random Medium posts). No bare URLs in body — use `[text](url)`.
 3. **No Obsidian wikilinks** (`[[Page]]`, `![[file.png]]`). Replace with real markdown links or inline content. Reference doc was written for Obsidian; this isn't.
 4. **No image embeds without source files.** If the original referenced `![[Screenshot.png]]`, either drop it or replace with a description + link to the source paper / docs.
@@ -64,6 +93,32 @@ Zensical (like MkDocs) uses the first `#` as the page title. Multiple `#` headin
 3. **When demoting headings** (e.g., merging content from another page), cascade every child heading down one level too (`#` → `##`, `##` → `###`, `###` → `####`).
 4. **Check bullet nesting after heading changes.** Indented code blocks and bullet lists that were children of the old heading level may lose their nesting. Verify that `- **Bold label**` items still have their sub-bullets indented with 4 spaces.
 5. **Never indent headings or code fences** with leading spaces — they render as inline text or code blocks inside the preceding list.
+
+## Glossary
+
+**One glossary for the whole site**: `docs/glossary.md`, surfaced under the **Resources** tab. Role tabs do *not* have their own glossary pages — they were removed deliberately. Never recreate `docs/<role>/glossary.md`.
+
+Structure: one `#` title, then one `##` heading per letter, each holding a single two-column table.
+
+```markdown
+## D
+
+| Term | Meaning |
+|------|---------|
+| **DAG** | Directed acyclic graph; dbt/Airflow dependency structure |
+```
+
+### When the user wants to add a term
+
+1. **Check for duplicates first.** `grep -in "term" docs/glossary.md`. If it's already there, refine that row — don't add a second.
+2. **File under the term's first letter**, and insert the row **alphabetically inside that table** — not appended at the end.
+3. **Create the letter section if missing.** Not every letter exists (currently no `J`, `Q`, `W`, `Y`, `Z`). Add the `##` heading in alphabetical position with the same two-line table header.
+4. **Bold the term, plain-text the meaning**: `| **Term** | Meaning |`. No trailing period.
+5. **Keep it role-agnostic.** DBA, DE, AE, and DA terms share one table. Don't tag, group, or split by role.
+6. **One-liners only.** If a term needs a paragraph, it belongs on a content page — link it from there and keep the glossary row terse.
+7. **Acronyms get expanded, not explained**: `| **ARPU** | Average Revenue Per User |`.
+
+Math renders inside the table (`$P(A|B) = P(B|A) P(A) / P(B)$`) — arithmatex is enabled. A few existing rows sit slightly out of alphabetical order (e.g. `ANOVA` before `ANCOVA`); leave them alone — place new rows correctly, but don't mass-reorder existing ones.
 
 ## Formatting raw pasted content
 
@@ -87,10 +142,11 @@ The user often pastes raw unformatted text (from notes, ChatGPT, or copy-paste f
 
 ## When asked to add content
 
-1. **Find the right home.** New SQL function → `sql/cheatsheet.md`. New ML topic → `advanced-analysis/regression.md` or new sibling. Don't create unnecessary pages.
+1. **Pick the role tab first, then the page.** Index/partition note → `dba/fundamentals.md`. Pipeline pattern → `de/fundamentals.md`. dbt model → `analytics-engineering/dbt.md`. SQL function → `docs/sql/` or `resources/sql-cheatsheet.md`. New term → `docs/glossary.md`. Don't create unnecessary pages.
 2. **Match neighbor style.** Open the surrounding page and mirror its tone, depth, and section headings.
 3. **Verify with build.** Always run `uv run zensical build --clean` and ensure "No issues found".
-4. **Update glossary** if you introduce a new term.
+4. **Update `docs/glossary.md`** if you introduce a new term — the single unified glossary, per the rules above.
+5. **Adding a page to a role tab** means updating three things: the file, the `## Pages` list in that role's `index.md`, and `nav` in `zensical.toml`.
 
 ## When asked to refactor
 
@@ -107,6 +163,10 @@ The user often pastes raw unformatted text (from notes, ChatGPT, or copy-paste f
 - Don't write summaries of changes inside the docs themselves (no "Recently updated" sections).
 - Don't edit content when the user says "DO NOT EDIT THE CONTENT" — only fix structure (headings, indentation, nesting).
 - Don't create multiple `#` (H1) headings on a single page — this breaks the TOC.
+- Don't recreate per-role glossary pages. The glossary is unified at `docs/glossary.md` under Resources.
+- Don't touch `site_url`, `repo_url`, `repo_name`, or the `dab` package name — TDB is a display name; the repo stays `DAB`.
+- Don't move the DA folders into a `docs/da/` directory — they're re-nested by `nav` only, and moving them breaks every published URL.
+- Don't author new prose for role content. Port the owner's own bible notes and lay out structure; leave a `<!-- TODO -->` where notes are missing.
 
 ## Sources for filling gaps
 
@@ -127,3 +187,5 @@ When ref material is thin, fill from these (already used throughout):
 ## Skills
 
 The `wiki-maintainer` skill at `.claude/skills/wiki-maintainer/SKILL.md` codifies this workflow. Invoke it when adding, editing, or refactoring docs.
+
+`CLAUDE.md` and `AGENTS.md` are identical apart from the title, the "this file" line in the tree, and the skill path (`.claude/` vs `.agents/`). Edit one, apply the same change to the other.

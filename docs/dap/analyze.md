@@ -186,6 +186,21 @@ Best practices:
 - [ ] Deliverable: summary of analysis
 ```
 
+## Quick Stats Guide
+
+### **1. Correlation (*r*)**
+* **Near 0:** No relationship.
+* **0.3 - 0.5:** Moderate relationship.
+* **0.7 - 1.0:** Very strong relationship.
+* *Note: (+) means same direction, (-) means opposite.*
+
+### **2. Significance (*p*)**
+* **p < 0.05:** **Significant.** The result is likely real.
+* **p > 0.05:** **Not Significant.** The result might be a fluke.
+
+### **Conclusion**
+Only trust the correlation (*r*) if the probability (*p*) is low.
+
 ## References
 
 - [pandas — Group by](https://pandas.pydata.org/docs/user_guide/groupby.html)

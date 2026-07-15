@@ -16,5 +16,4 @@ This will generally vary based on the various requirements of different organiza
 - **[Fundamentals](fundamentals.md)**
 - **[Practical Snippets](snippets.md)**
 - **[Case Study](case-study.md)**
-- **[Glossary](glossary.md)**
 - **[Materials](materials.md)**

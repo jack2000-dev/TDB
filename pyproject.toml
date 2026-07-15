@@ -1,6 +1,6 @@
 [project]
-name = "dab"
-version = "0.1.0"
+name = "TDB"
+version = "1.0.0"
 description = "The Data Bible: a knowledge base covering database administration, data engineering, analytics engineering, and data analysis"
 readme = "README.md"
 requires-python = ">=3.13"

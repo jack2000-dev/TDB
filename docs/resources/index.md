@@ -2,6 +2,8 @@
 
 ## Pages
 
+- **[Glossary](../glossary.md)** — full term glossary, searchable
+- **[Templates](../templates/index.md)** — SOW, DAF, DASF 2.0 links
 - **[Python Cheatsheet](python-cheatsheet.md)** — most-used pandas functions
 - **[SQL Cheatsheet](sql-cheatsheet.md)** — most-used functions and clauses
 - **[Books](books.md)** — DAMA-DMBOK, Tukey, McKinney, Wickham

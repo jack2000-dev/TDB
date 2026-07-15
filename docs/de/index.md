@@ -15,5 +15,4 @@ Data engineers deliver value through technical solutions. They connect different
 - **[Fundamentals](fundamentals.md)**
 - **[Practical Snippets](snippets.md)**
 - **[Case Study](case-study.md)**
-- **[Glossary](glossary.md)**
 - **[Materials](materials.md)**
