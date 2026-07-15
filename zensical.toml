@@ -27,9 +27,9 @@ site_author = "jack2000-dev"
 # The site_url is the canonical URL for your site. When building online
 # documentation you should set this.
 # Read more: https://zensical.org/docs/setup/basics/#site_url
-site_url = "https://jack2000-dev.github.io/DAB/"
-repo_url = "https://github.com/jack2000-dev/DAB"
-repo_name = "jack2000-dev/DAB"
+site_url = "https://jack2000-dev.github.io/TDB/"
+repo_url = "https://github.com/jack2000-dev/TDB"
+repo_name = "jack2000-dev/TDB"
 
 # The copyright notice appears in the page footer and can contain an HTML
 # fragment.
@@ -395,7 +395,7 @@ toggle.name = "Switch to light mode"
 # ----------------------------------------------------------------------------
 [[project.extra.social]]
 icon = "fontawesome/brands/github"
-link = "https://github.com/jack2000-dev/DAB"
+link = "https://github.com/jack2000-dev/TDB"
 
 
 

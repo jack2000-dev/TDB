@@ -14,8 +14,6 @@ A searchable knowledge base organized by **career role**, not by topic. The tab 
 | **Data Analyst** | `dap/`, `python/`, `sql/`, `visualization/`, `ai-for-da/`, `tools/`, `soft-skills/` | Ask→Act process, cleaning, Python, SQL, viz, AI for DA, soft skills |
 | **Resources** | `docs/resources/`, `docs/glossary.md`, `docs/templates/` | Unified glossary, templates, cheatsheets, books, datasets |
 
-"TDB" is a **display name only** — the repo slug, `site_url`, and `repo_url` stay `DAB`.
-
 Built with **[Zensical](https://zensical.org/)** (Material-for-MkDocs successor) + **uv** for Python deps. Hosted on GitHub Pages from `main` via `.github/workflows/docs.yml`.
 
 ## Repo layout
@@ -164,7 +162,6 @@ The user often pastes raw unformatted text (from notes, ChatGPT, or copy-paste f
 - Don't edit content when the user says "DO NOT EDIT THE CONTENT" — only fix structure (headings, indentation, nesting).
 - Don't create multiple `#` (H1) headings on a single page — this breaks the TOC.
 - Don't recreate per-role glossary pages. The glossary is unified at `docs/glossary.md` under Resources.
-- Don't touch `site_url`, `repo_url`, or `repo_name` — TDB is a display name; the repo and its published URL stay `DAB`. (`pyproject.toml`'s `name` is deliberately `TDB` — it's a virtual package, nothing publishes or imports it. Leave it.)
 - Don't move the DA folders into a `docs/da/` directory — they're re-nested by `nav` only, and moving them breaks every published URL.
 - Don't author new prose for role content. Port the owner's own bible notes and lay out structure; leave a `<!-- TODO -->` where notes are missing.
 
