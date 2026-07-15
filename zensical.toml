@@ -130,6 +130,7 @@ nav = [
     { Books = "resources/books.md" },
     { "Tutorials & Practice" = "resources/tutorials.md" },
     { Datasets = "resources/datasets.md" },
+    { Miscellaneous = "resources/misc.md"}
   ]},
 ]
 
