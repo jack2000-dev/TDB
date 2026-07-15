@@ -1,0 +1,31 @@
+CLAUDE.md
+  s_ef8b716fb2d34c::t_d8692c5edaa7d3 167
+.claude/skills/wiki-maintainer/SKILL.md
+  s_ef8b716fb2d34c::t_b2a18b32873bd4 14-19
+  s_ef8b716fb2d34c::t_61e533e548a2c9 37-38,41,46,50-66,69-85
+  s_ef8b716fb2d34c::t_3388acc79f9832 181-191,194-199,202
+  s_ef8b716fb2d34c::t_ca603842029580 142,144-150
+  s_ef8b716fb2d34c::t_ee942716bc6fc3 255
+  s_ef8b716fb2d34c::t_39c798e73b31e2 87-111
+  s_ef8b716fb2d34c::t_a8734774db75cf 86
+.agents/skills/wiki-maintainer/SKILL.md
+  s_ef8b716fb2d34c::t_5120f6d046e511 14-19,37-38,41,46,50-66,69-111,142,144-150,181-191,194-199,202,255
+AGENTS.md
+  s_ef8b716fb2d34c::t_c4a3c2b135b999 167
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "c81a9857ddd36fbaf76bc8fcc1c76ad1dcb8d305",
+  "prompts": {},
+  "sessions": {
+    "s_ef8b716fb2d34c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3e7438b2-b264-45fe-b148-7c694b57d932",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
