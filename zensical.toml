@@ -56,6 +56,14 @@ nav = [
     { Glossary = "dba/glossary.md" },
     { Materials = "dba/materials.md" },
   ]},
+  { "Data Engineer" = [
+    { Overview = "de/index.md" },
+    { Fundamentals = "de/fundamentals.md" },
+    { "Practical Snippets" = "de/snippets.md" },
+    { "Case Study" = "de/case-study.md" },
+    { Glossary = "de/glossary.md" },
+    { Materials = "de/materials.md" },
+  ]},
   { "DAP" = [
     { Overview = "dap/index.md" },
     { Ask = "dap/ask.md" },
