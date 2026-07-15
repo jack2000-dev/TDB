@@ -1,0 +1,45 @@
+CLAUDE.md
+  s_ef8b716fb2d34c::t_83e7a3fc2133ed 121
+  s_ef8b716fb2d34c::t_64bb6efb1d700d 97-120,122
+  s_ef8b716fb2d34c::t_6c2fb961fec645 76
+  s_ef8b716fb2d34c::t_f85fc61edfddc8 3,7-17,26,29,31-45,48-62
+  s_ef8b716fb2d34c::t_166015d0079908 145,148-149
+  s_ef8b716fb2d34c::t_b57ed1f66072e4 166-169
+  s_ef8b716fb2d34c::t_1e71a596949188 190-191
+  s_ef8b716fb2d34c::t_c0d392b8233302 63
+zensical.toml
+  s_dedd32bb224ade::t_8bb20b2a3a4b7b 75-122,126-127
+docs/index.md
+  s_dedd32bb224ade::t_5a6da1e1c564e7 13
+  s_dedd32bb224ade::t_a151686bb9f88d 9-12
+docs/resources/index.md
+  s_dedd32bb224ade::t_c4e56ad3f4a477 5-6
+AGENTS.md
+  s_ef8b716fb2d34c::t_dff87e5ebb239a 3,7-17,26,29,31-45,48-63,76,97-122,145,148-149,166-169,190-191
+docs/dap/analyze.md
+  s_dedd32bb224ade::t_1f5695d25f7cad 189-203
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "499fc9645a73440a090990914f50f2e9160b7579",
+  "prompts": {},
+  "sessions": {
+    "s_dedd32bb224ade": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4ed211f0-bd54-44a7-8538-e9d4449e88e9",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    },
+    "s_ef8b716fb2d34c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3e7438b2-b264-45fe-b148-7c694b57d932",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
