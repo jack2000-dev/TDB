@@ -1,5 +1,13 @@
 # Materials
 
+## Tools
+
+<!-- TODO: tools list -->
+
+## Community
+
+<!-- TODO: community list -->
+
 ## Dataset
 
 - [Google Dataset Search](https://datasetsearch.research.google.com/)

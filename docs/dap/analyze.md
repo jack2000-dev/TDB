@@ -189,17 +189,24 @@ Best practices:
 ## Quick Stats Guide
 
 ### **1. Correlation (*r*)**
-* **Near 0:** No relationship.
-* **0.3 - 0.5:** Moderate relationship.
-* **0.7 - 1.0:** Very strong relationship.
-* *Note: (+) means same direction, (-) means opposite.*
+
+*r* measures the strength of a **linear** relationship only. A value near 0 means little or no *linear* association — the variables can still be related nonlinearly (e.g., U-shaped), so don't discard the pair without plotting it.
+
+| `\|r\|` range | Rough guide |
+|-------------|-------------|
+| 0.0 – 0.3   | Weak        |
+| 0.3 – 0.7   | Moderate    |
+| 0.7 – 1.0   | Strong      |
+
+These bands aren't universal rules — what counts as "strong" depends on the field and the noise in the data. Interpret magnitude in context, and check the scatter plot. *(+) means same direction, (-) means opposite.*
 
 ### **2. Significance (*p*)**
-* **p < 0.05:** **Significant.** The result is likely real.
-* **p > 0.05:** **Not Significant.** The result might be a fluke.
+* **p < 0.05:** The data is unlikely under the null hypothesis (no relationship) — evidence against the null, at the conventional threshold.
+* **p = 0.05:** Right at the cutoff — borderline, not a clean pass or fail.
+* **p > 0.05:** Not enough evidence to reject the null hypothesis. This does not prove there's no relationship.
 
 ### **Conclusion**
-Only trust the correlation (*r*) if the probability (*p*) is low.
+A low *p*-value alone doesn't make a correlation trustworthy, and a high one doesn't invalidate it. Weigh *p* alongside effect size (the *r* value), sample size, study design, and whether the model's assumptions hold.
 
 ## References
 

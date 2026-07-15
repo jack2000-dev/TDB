@@ -13,6 +13,8 @@ For a daily batch:
 This way, if the pipeline runs twice, the final table still has only one correct version of the data.
 
 ```sql
+BEGIN TRANSACTION;
+
 DELETE FROM fact_orders
 WHERE order_date = '2026-05-28';
 
@@ -20,19 +22,17 @@ INSERT INTO fact_orders
 SELECT *
 FROM staging_orders
 WHERE order_date = '2026-05-28';
+
+COMMIT;
 ```
+
+Wrap both statements in one transaction — otherwise a failure between the `DELETE` and the `INSERT` leaves `fact_orders` missing that day's data, and a retry runs against a partially-replaced table.
 
 Note: Another good method is `MERGE`/upsert using `order_id`.
 
 ## dbt incremental model
 
-Use `updated_at` as the incremental watermark.
-
-1. Store the latest updated_at value from the previous successful load.
-2. On the next run, extract only rows where updated_at is greater than the saved watermark.
-3. Load the new or changed rows into a staging table.
-4. Merge/upsert into the final table using transaction_id as the unique key.
-5. After a successful run, update the stored watermark.
+Watermark logic and pitfalls are covered in [Fundamentals → dbt](fundamentals.md#dbt).
 
 ```sql
 {{ config(
@@ -49,9 +49,8 @@ SELECT
 FROM source.transactions
 
 {% if is_incremental() %}
-WHERE updated_at > (
-    SELECT MAX(updated_at)
-    FROM {{ this }}
+WHERE updated_at >= (
+    SELECT COALESCE(MAX(updated_at), '1970-01-01') FROM {{ this }}
 )
 {% endif %}
 ```

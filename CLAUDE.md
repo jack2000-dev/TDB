@@ -118,7 +118,7 @@ Structure: one `#` title, then one `##` heading per letter, each holding a singl
 6. **One-liners only.** If a term needs a paragraph, it belongs on a content page — link it from there and keep the glossary row terse.
 7. **Acronyms get expanded, not explained**: `| **ARPU** | Average Revenue Per User |`.
 
-Math renders inside the table (`$P(A|B) = P(B|A) P(A) / P(B)$`) — arithmatex is enabled. A few existing rows sit slightly out of alphabetical order (e.g. `ANOVA` before `ANCOVA`); leave them alone — place new rows correctly, but don't mass-reorder existing ones.
+Math renders inside the table (`$P(A\|B) = P(B\|A) P(A) / P(B)$` — escape literal pipes with `\|` so they don't terminate the table cell) — arithmatex is enabled. A few existing rows sit slightly out of alphabetical order (e.g. `ANOVA` before `ANCOVA`); leave them alone — place new rows correctly, but don't mass-reorder existing ones.
 
 ## Formatting raw pasted content
 
@@ -142,7 +142,7 @@ The user often pastes raw unformatted text (from notes, ChatGPT, or copy-paste f
 
 ## When asked to add content
 
-1. **Pick the role tab first, then the page.** Index/partition note → `dba/fundamentals.md`. Pipeline pattern → `de/fundamentals.md`. dbt model → `analytics-engineering/dbt.md`. SQL function → `docs/sql/` or `resources/sql-cheatsheet.md`. New term → `docs/glossary.md`. Don't create unnecessary pages.
+1. **Pick the role tab first, then the page.** Index/partition note → `docs/dba/fundamentals.md`. Pipeline pattern → `docs/de/fundamentals.md`. dbt model → `docs/analytics-engineering/dbt.md`. SQL function → `docs/sql/` or `docs/resources/sql-cheatsheet.md`. New term → `docs/glossary.md`. Don't create unnecessary pages.
 2. **Match neighbor style.** Open the surrounding page and mirror its tone, depth, and section headings.
 3. **Verify with build.** Always run `uv run zensical build --clean` and ensure "No issues found".
 4. **Update `docs/glossary.md`** if you introduce a new term — the single unified glossary, per the rules above.

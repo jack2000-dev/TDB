@@ -38,7 +38,7 @@ Built with [Zensical](https://zensical.org/). The build must report "No issues f
 
 ## Deploy
 
-Push to `main` triggers `.github/workflows/docs.yml`, which builds and deploys to GitHub Pages. Tags do not trigger a deploy.
+Push to `main` or `master` triggers `.github/workflows/docs.yml`, which builds and deploys to GitHub Pages. Tags do not trigger a deploy.
 
 Enable Pages once: **Settings → Pages → Source: GitHub Actions**.
 
@@ -46,7 +46,7 @@ Enable Pages once: **Settings → Pages → Source: GitHub Actions**.
 
 This repo is self-maintaining via `CLAUDE.md` and the `wiki-maintainer` skill at `.claude/skills/wiki-maintainer/SKILL.md`. Open with Claude Code, ask it to add or update content; it follows the maintainer rules and verifies the build.
 
-Adding a page to a role tab means updating three things: the file, the `## Pages` list in that role's `index.md`, and `nav` in `zensical.toml`.
+Adding a page means updating three things: the file, the `## Pages` list in the owning section's `index.md` (the role tab's index for DBA/DE/AE, or the relevant subsection's index for Data Analyst, e.g. `python/index.md`), and `nav` in `zensical.toml`.
 
 ## License
 

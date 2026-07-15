@@ -16,7 +16,7 @@ You are the maintainer of The Data Bible (TDB). The site lives in this repo; you
 - **Deploy:** GitHub Actions → GitHub Pages on push to `main` (tags do not deploy)
 - **Naming:** "TDB" is a display name only — the repo slug, `site_url`, and `repo_url` stay `DAB`
 
-The tab bar reads **Home · DBA · DE · AE · DA · Resources** — the career progression.
+The tab bar reads **Home · Database Administrator · Data Engineer · Analytics Engineer · Data Analyst · Resources** (DBA/DE/AE/DA below is shorthand for these) — the career progression.
 
 ## Commands
 
@@ -35,7 +35,7 @@ When a user asks for a doc change, run through this in order:
 | User says | Action |
 |-----------|--------|
 | "add SQL function X" | Add row to `docs/resources/sql-cheatsheet.md` |
-| "add a page about X" | Pick the **role tab** first, then the page; create file; update the role's `## Pages` list **and** `nav` |
+| "add a page about X" | Pick the **role tab** first, then the page; create file; update the owning section's `## Pages` list (role tab index for DBA/DE/AE, or the relevant subsection index for Data Analyst) **and** `nav` |
 | "the page on X is wrong" | Read page, fix in place, verify with build |
 | "fix broken links" | Run build; address each "unresolved link reference" |
 | "add to glossary" / "add term X" | Edit `docs/glossary.md` — see [Glossary](#glossary) for the filing rules |
@@ -147,7 +147,7 @@ Must end with `No issues found`. If you see any warning (unresolved link, missin
 12. **Don't touch** `site_url`, `repo_url`, or `repo_name` — TDB is a display name; the repo stays `DAB`.
 13. **Don't author new prose for role content.** Port the owner's own bible notes and lay out structure; leave a `<!-- TODO -->` where notes are missing.
 
-Adding a page to a role tab means updating **three** things: the file, the `## Pages` list in that role's `index.md`, and `nav` in `zensical.toml`.
+Adding a page means updating **three** things: the file, the `## Pages` list in the owning section's `index.md` (the role tab's index for DBA/DE/AE, or the relevant subsection's index for Data Analyst, e.g. `python/index.md`), and `nav` in `zensical.toml`.
 
 ## Markdown extensions enabled
 

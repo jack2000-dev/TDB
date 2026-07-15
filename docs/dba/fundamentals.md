@@ -12,13 +12,15 @@ Indexes are database objects that enhance the speed of data retrieval operations
 | **Composite index**     | Indexes multiple columns in combination.                | Queries filtering on multiple columns, like first_name and last_name. |
 | **Full-text index**     | Facilitates fast text searches in large text fields.    | Searching through large text fields like description or comments.     |
 
+Clustered-index behavior varies by engine — don't treat it as universal. SQL Server and MySQL/InnoDB store table rows in clustered-index order and allow only one clustered index per table. PostgreSQL has no storage-level clustered index: heap tables are unordered by default, and `CLUSTER` performs a one-time physical reorder rather than maintaining order continuously.
+
 ## Database Partitioning
 
 ### What is database partitioning and when would you use it?
 
 - db partitioning is dividing a large table into smaller, more manageable pieces called **partitions**.
 - Each one stored separately and can be queried individually, thus, significantly improve performance and manageability, especially for very large datasets
-- If data large -> use partitioning (Start using it when the query performance start to drop)
+- Partition when the workload can **prune** to a subset of partitions (e.g., queries filter on the partition key) and when partition-level maintenance (archiving, purging, reindexing) meaningfully reduces operational cost — table size or a slowdown alone isn't sufficient justification, since partitioning adds operational complexity.
 - For instance, in a table storing historical transaction data, I might partition the data by month or year. This allows queries that target specific time periods to access only the relevant partition instead of scanning the entire table, thus improving performance.
 - Additionally, partitioning can make maintenance tasks, like archiving or purging old data, more efficient since these operations can be performed on individual partitions rather than the whole table.
 
@@ -31,21 +33,21 @@ Indexes are database objects that enhance the speed of data retrieval operations
 
 ## Database Replication
 
-Database replication is basically clone your database. Copy and maintain database objects across multiple servers to make sure data are redundancy (fat data) and high availability (db status green 24/7). It can be synchronous or asynchronous.
+Database replication is copying and maintaining database objects across multiple servers, for redundancy and availability. Replication alone doesn't guarantee failover, 24/7 uptime, or zero data loss — those depend on the topology, consistency mode, and an explicit failover design on top of replication.
 
-- **Synchronous:** replication ensures that changes are reflected in real time across servers.
-- **Asynchronous:** replication updates replicas with a slight delay.
-- **More:** Replication is particularly useful in scenarios where uptime is critical, such as for e-commerce platforms, where users expect the database to always be available, even during maintenance or hardware failures.
+- **Synchronous:** the primary waits for a configured number of replica acknowledgements before committing, keeping replicas caught up at the cost of write latency.
+- **Asynchronous:** the primary commits without waiting for replicas, so replica lag can vary from milliseconds to much longer under load — there's no guaranteed bound.
+- **More:** Replication is particularly useful in scenarios where uptime is critical, such as for e-commerce platforms, where users expect the database to always be available, even during maintenance or hardware failures. Achieving that in practice also requires a defined failover procedure, not replication alone.
 
 ## Types of Database Replication
 
-| Feature               | **Master-slave replication**                                              | **Master-master replication**                              |
+| Feature               | **Single-primary (primary/replica)**                                       | **Multi-primary**                                           |
 | --------------------- | ------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| **Write operations**  | Writes occur only on the master node.                                     | Writes can occur on both masters.                          |
-| **Read operations**   | Reads can be offloaded to slave nodes.                                    | Reads can occur on any master node.                        |
+| **Write operations**  | Writes occur only on the primary node.                                    | Writes can occur on multiple nodes.                          |
+| **Read operations**   | Reads can be offloaded to replica nodes.                                  | Reads can occur on any primary node.                        |
 | **Use case**          | Used when reads outnumber writes, and eventual consistency is acceptable. | Used in distributed systems with multiple write locations. |
 | **Conflict handling** | No conflicts (since only one node writes).                                | Requires conflict resolution mechanisms.                   |
-| **Example**           | MySQL Master-Slave Replication                                            | MongoDB or Cassandra Master-Master                         |
+| **Example**           | MySQL primary/replica replication, MongoDB replica sets (single-primary)  | Cassandra (masterless, multi-primary)                       |
 
 ## Database Views
 
@@ -57,8 +59,8 @@ Database replication is basically clone your database. Copy and maintain databas
 
 1. **Vertical scaling**
    This involves adding more resources, such as CPU, memory, or storage, to the existing database server. While it's the simplest approach, it has its limits since hardware can only be upgraded to a certain extent. I would use vertical scaling as a short-term solution or in scenarios where the database isn't extremely large or doesn't require frequent scaling.
-2. **Horizontal scaling (sharding)**
-   It basically distributing the database across servers or nodes. Great for larger databases or when dealing with massive dataset
+2. **Horizontal scaling**
+   Distributing load across servers or nodes rather than growing a single machine. This covers a few distinct techniques: **read replicas** (offload reads to copies), **partitioning** (split a table within one database), and **sharding** (split data across separate database instances) — scaling out doesn't automatically mean repartitioning data.
 3. **Replication**
    Replication involves copying data to multiple database servers to distribute the read workload. I would set up master-slave or master-master replication to allow multiple servers to handle read requests, improving read scalability. This method also adds redundancy, which enhances data availability and fault tolerance.
 4. **Database indexing and query optimization**
@@ -74,7 +76,7 @@ Database replication is basically clone your database. Copy and maintain databas
 | :------------------- | :---------------------------- | :--------------------------------- | :------------------------------------------------ |
 | **Focus**            | Transactional processing      | Analytical processing              | Unified transactional & analytical processing     |
 | **Query type**       | Simple, frequent transactions | Complex, long-running queries      | Both (separated compute on shared storage)        |
-| **Data size**        | Small transactions            | Large data sets, often historical  | Single shared copy for active and historical data |
+| **Workload**         | Many small, concurrent transactions | Large data sets, often historical  | Single shared copy for active and historical data |
 | **Schema design**    | Highly normalized             | Often denormalized                 | Open table formats (e.g., Delta, Iceberg)         |
 | **Typical use case** | E-commerce, banking systems   | Data warehouses, reporting systems | AI agents, real-time operational analytics        |
 | **Examples**         | MySQL, PostgreSQL             | Redshift, Snowflake                | Databricks (Lakebase + Lakehouse)                 |
@@ -107,7 +109,7 @@ Database replication is basically clone your database. Copy and maintain databas
 1. **Assessment and planning**
    Start by assessing the existing database environment to understand the schema, data size, and application dependencies. Next, I'd select the appropriate cloud service and instance type based on the workload requirements – it's important to plan for network configuration, security, and compliance considerations.
 2. **Data migration strategy**
-   Choose an appropriate data migration strategy such as offline migration using tools like AWS Database Migration Service (DMS) or Azure Database Migration Service for minimal downtime. For large databases, using a phased approach or data pipeline solutions like AWS Snowball for initial bulk data transfer can be effective.
+   Choose a strategy based on the downtime budget: an **offline** migration (stop writes, copy, cut over) is simplest but incurs application downtime; a **minimal-downtime** migration uses a tool like AWS DMS or Azure Database Migration Service in full-load-plus-CDC mode to keep the target in sync until cutover. For very large databases, AWS Snowball can handle the initial bulk transfer out-of-band, with DMS/CDC handling the delta afterward.
 3. **Testing**
    Conduct thorough testing in a staging environment that mirrors the production setup. Test the data migration process, connectivity, performance, and failover scenarios to identify any issues before the actual migration.
 4. **Minimal downtime cutover**
@@ -124,14 +126,14 @@ Database replication is basically clone your database. Copy and maintain databas
 3. **Network security**
    Utilize Virtual Private Cloud (VPC) or Virtual Network (VNet) configurations to isolate databases within a secure network. Use security groups, firewalls, and network ACLs to restrict access to the database to trusted IP addresses or subnets.
 4. **Monitoring and auditing**
-   Enable database logging and monitoring features to track access and query execution. Use services like AWS CloudTrail, [Azure Monitor](https://www.datacamp.com/tutorial/getting-started-with-azure-monitor), or Google Cloud Audit Logs to maintain an audit trail of database activities.
+   Enable engine-specific audit logging for query execution — e.g., PostgreSQL's `pgaudit`, MySQL's audit log plugin, or RDS/Aurora database activity streams — since AWS CloudTrail records control-plane API calls (who called `CreateDBInstance`, etc.), not the SQL queries run inside the database. CloudTrail, Azure Monitor, or Google Cloud Audit Logs are still useful for tracking infrastructure-level changes.
 5. **Compliance and regular security audits**
-   Ensure the database complies with relevant regulations, like [GDPR](https://www.datacamp.com/courses/understanding-gdpr) or HIPAA or for Thailand, [PDPA](https://www.dct.or.th/upload/downloads/1612025563SummaryPDPA_DigitalCouncilofThailand.pdf); by configuring data protection settings and performing regular security audits and vulnerability assessments.
+   Database settings and audit logging are technical controls that *support* compliance with regulations like [GDPR](https://www.datacamp.com/courses/understanding-gdpr), HIPAA, or Thailand's [PDPA](https://www.dct.or.th/upload/downloads/1612025563SummaryPDPA_DigitalCouncilofThailand.pdf) — they don't establish compliance on their own. Treat this as one input to a formal compliance assessment owned by legal/compliance, alongside regular security audits and vulnerability assessments.
 
 ## On-Premises vs. Cloud-Based Database Management
 
 - **On-premises:** It's basically that you own your server (hardware infrastructure). Meaning that you have to do backups, patching, and monitoring all by yourself at your own expense, time, manpower, and effort.
-- **Cloud-based:** You pay for the cloud service, and the big company takes care of you. They offer scalability, built-in high availability, and automated backups. Cloud databases also provide options for scaling resources up or down as needed, without the need to invest in physical hardware. For example, in AWS RDS, you can easily scale compute power and storage with just a few clicks, and the system manages the hardware side of things for you.
+- **Cloud-based:** For a **configured managed service** like AWS RDS, you pay for the service and the provider handles scaling compute/storage, built-in high availability, and automated backups with a few clicks. This isn't automatic for every cloud-based database, though — a self-managed database running on a cloud VM still needs you to configure backups, failover, and patching yourself; the guarantees apply to the managed-service tier, not to "cloud" in general.
 
 ## References
 

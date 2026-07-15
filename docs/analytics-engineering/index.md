@@ -1,4 +1,4 @@
-# Analytics Engineering
+# Analytics Engineer
 
 Bridging the gap between data engineering and data analysis — building reliable, tested, documented data pipelines.
 

@@ -7,7 +7,7 @@ Production database experienced severe performance degradation, impacting our cu
 **Fix:**
 
 1. **Notify** the stakeholders (anyone who is involved in the project or relevant people) and **set up a bridge call** to keep communication open
-2. **Access** the databases and use tools like **SQL Server Profiler** to identify long-running queries and resource-intensive processes
+2. **Access** the databases and use a scoped **Extended Events** session to identify long-running queries and resource-intensive processes — Microsoft has deprecated SQL Server Profiler and warns it can be resource-intensive on production servers
 3. After being **identified**, it turns out that the query was causing a deadlock due to a missing index. → **Fix** by adding the appropriate index
 4. **Review** the query execution plan and restructure the SQL queries to optimize performance further. Schedule a maintenance window to thoroughly analyze and optimize the database without impacting users
 5. **Document** the issue, solution steps, and the lessons learned to improve our incident response process for future scenarios. (E.g., the importance of having a systematic approach to troubleshooting and the need for proactive performance monitoring)
@@ -35,9 +35,9 @@ How to improve?
 1. Analyze the query execution plan to spot any bottlenecks causing delays
 2. Look for things like **full table scans**, **missing indexes**, **inefficient joins**
 
-- If full table scans then add appropriate indexes to the columns used in the `WHERE` clause or `JOIN` operations can significantly improve performance.
-- For example, if the query use a lot of filters on a column, then use index for that column to reduce the data retrieval time.
-- Also consider rewriting the query to simplify or break it down using subqueries or CTE (Common Table Expression) aka temporary table.
+- A full table scan isn't automatically a bottleneck — check table size, predicate selectivity, and the actual execution plan first. Adding an index to a small table or a low-selectivity column can make writes slower and cost storage without improving the plan.
+- If the scan is confirmed as the bottleneck and the query filters on a selective column, adding an index on that column reduces data retrieval time.
+- Also consider rewriting the query to simplify or break it down using subqueries or a CTE (Common Table Expression) — a CTE is a named query expression, not a temporary table; its results aren't materialized by definition.
 
 ## Database deadlocks
 

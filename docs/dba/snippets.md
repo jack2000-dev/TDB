@@ -4,14 +4,20 @@
 
 **Install:** Recommend `OrbStack` for better Docker performance
 
+Set a local password in your shell first — don't hardcode one in commands you might share:
+
 ```bash
+export MSSQL_SA_PASSWORD='Test@12345'
+
 docker run -e "ACCEPT_EULA=Y" \
-           -e "MSSQL_SA_PASSWORD=Test@12345" \
-           -p 1433:1433 \
+           -e "MSSQL_SA_PASSWORD=${MSSQL_SA_PASSWORD}" \
+           -p 127.0.0.1:1433:1433 \
            --name mssql_server \
            --platform linux/amd64 \
            -d mcr.microsoft.com/mssql/server:2022-latest
 ```
+
+Binding to `127.0.0.1` keeps the `sa` login reachable only from localhost — without it, port 1433 is open to any client that can reach your machine's network interface.
 
 **Use:**
 
@@ -20,11 +26,11 @@ docker run -e "ACCEPT_EULA=Y" \
     - **Host:** `localhost` (or `127.0.0.1`)
     - **Port:** `1433`
     - **Username:** `sa`
-    - **Password:** `paswordtest1234`
+    - **Password:** the value of `$MSSQL_SA_PASSWORD` set above
     - _Note:_ For SQL Server 2022, ensure you check the box for "Trust Server Certificate" (or set `encrypt=false`) in your driver settings if the connection fails.
 - **Option B:** Terminal (CLI)
   ```bash
-  docker exec -it mssql_server /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P paswordtest1234 -C
+  docker exec -it mssql_server /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "$MSSQL_SA_PASSWORD" -C
   ```
   This command will start and run `sqlcmd`.
 
