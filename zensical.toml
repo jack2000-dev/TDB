@@ -11,13 +11,13 @@
 # The site_name is shown in the page header and the browser window title
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_name
-site_name = "Data Analysis Bible"
+site_name = "The Data Bible"
 
 # The site_description is included in the HTML head and should contain a
 # meaningful description of the site content for use by search engines.
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_description
-site_description = "Searchable wiki for data analysis: process, cleaning, Python, SQL, visualization, statistics, BI."
+site_description = "A knowledge base covering four data roles: database administration, data engineering, analytics engineering, and data analysis."
 
 # The site_author attribute. This is used in the HTML head element.
 #
@@ -48,72 +48,90 @@ Copyright &copy; 2026 jack2000-dev
 # Read more: https://zensical.org/docs/setup/navigation/
 nav = [
   { Home = "index.md" },
-  { "DAP" = [
-    { Overview = "dap/index.md" },
-    { Ask = "dap/ask.md" },
-    { Prepare = "dap/prepare.md" },
-    { Process = "dap/process.md" },
-    { "Data Cleaning" = "dap/data-cleaning.md" },
-    { Analyze = "dap/analyze.md" },
-    { "Metrics & KPIs" = "dap/metrics.md" },
-    { Experimentation = "dap/experimentation.md" },
-    { Share = "dap/share.md" },
-    { Act = "dap/act.md" },
+  { "Database Administrator" = [
+    { Overview = "dba/index.md" },
+    { Fundamentals = "dba/fundamentals.md" },
+    { "Practical Snippets" = "dba/snippets.md" },
+    { "Case Study" = "dba/case-study.md" },
+    { Materials = "dba/materials.md" },
   ]},
-  { Python = [
-    { Overview = "python/index.md" },
-    { EDA = "python/eda.md" },
-    { Libraries = "python/libraries.md" },
-    { Snippets = "python/snippets.md" },
+  { "Data Engineer" = [
+    { Overview = "de/index.md" },
+    { Fundamentals = "de/fundamentals.md" },
+    { "Practical Snippets" = "de/snippets.md" },
+    { "Case Study" = "de/case-study.md" },
+    { Materials = "de/materials.md" },
   ]},
-  { SQL = [
-    { Overview = "sql/index.md" },
-    { Fundamentals = "sql/fundamentals.md" },
-    { Optimization = "sql/optimization.md" },
-    { Snippets = "sql/snippets.md" },
-  ]},
-  { Visualization = [
-    { Overview = "visualization/index.md" },
-    { "Chart Selection" = "visualization/chart-selection.md" },
-    { "Design Principles" = "visualization/design-principles.md" },
-    { "Dashboard Architecture" = "visualization/dashboards.md" },
-    { Tools = "visualization/tools.md" },
-  ]},
-  { "Analytics Engineering" = [
+  { "Analytics Engineer" = [
     { Overview = "analytics-engineering/index.md" },
-    { Foundations = "analytics-engineering/AE-foundation.md" },
+    { Fundamentals = "analytics-engineering/AE-foundation.md" },
     { "Data Modeling" = "analytics-engineering/data-modeling.md" },
     { "ELT Process" = "analytics-engineering/process.md" },
     { dbt = "analytics-engineering/dbt.md" },
     { "Version Control" = "analytics-engineering/vcs.md" },
     { "ADLC" = "analytics-engineering/ADLC.md" },
+    { Materials = "analytics-engineering/materials.md" },
   ]},
-  { "AI for DA" = [
-    { Overview = "ai-for-da/index.md" },
-    { Tools = "ai-for-da/tools.md" },
-    { "Prompt Framework" = "ai-for-da/prompt-framework.md" },
-  ]},
-  { Tools = [
-    { Overview = "tools/index.md" },
-    { "Tech Stack" = "tools/techstack.md" },
-    { Git = "tools/git.md" },
-    { Spreadsheets = "tools/spreadsheets.md" },
-  ]},
-  { Templates = "templates/index.md" },
-  { "Soft Skills" = [
-    { Overview = "soft-skills/index.md" },
-    { Stakeholders = "soft-skills/stakeholders.md" },
-    { Meetings = "soft-skills/meetings.md" },
+  { "Data Analyst" = [
+    { "DAP" = [
+      { Overview = "dap/index.md" },
+      { Ask = "dap/ask.md" },
+      { Prepare = "dap/prepare.md" },
+      { Process = "dap/process.md" },
+      { "Data Cleaning" = "dap/data-cleaning.md" },
+      { Analyze = "dap/analyze.md" },
+      { "Metrics & KPIs" = "dap/metrics.md" },
+      { Experimentation = "dap/experimentation.md" },
+      { Share = "dap/share.md" },
+      { Act = "dap/act.md" },
+    ]},
+    { Python = [
+      { Overview = "python/index.md" },
+      { EDA = "python/eda.md" },
+      { Libraries = "python/libraries.md" },
+      { Snippets = "python/snippets.md" },
+    ]},
+    { SQL = [
+      { Overview = "sql/index.md" },
+      { Fundamentals = "sql/fundamentals.md" },
+      { Optimization = "sql/optimization.md" },
+      { Snippets = "sql/snippets.md" },
+    ]},
+    { Visualization = [
+      { Overview = "visualization/index.md" },
+      { "Chart Selection" = "visualization/chart-selection.md" },
+      { "Design Principles" = "visualization/design-principles.md" },
+      { "Dashboard Architecture" = "visualization/dashboards.md" },
+      { Tools = "visualization/tools.md" },
+    ]},
+    { "AI for DA" = [
+      { Overview = "ai-for-da/index.md" },
+      { Tools = "ai-for-da/tools.md" },
+      { "Prompt Framework" = "ai-for-da/prompt-framework.md" },
+    ]},
+    { Tools = [
+      { Overview = "tools/index.md" },
+      { "Tech Stack" = "tools/techstack.md" },
+      { Git = "tools/git.md" },
+      { Spreadsheets = "tools/spreadsheets.md" },
+    ]},
+    { "Soft Skills" = [
+      { Overview = "soft-skills/index.md" },
+      { Stakeholders = "soft-skills/stakeholders.md" },
+      { Meetings = "soft-skills/meetings.md" },
+    ]},
   ]},
   { Resources = [
     { Overview = "resources/index.md" },
+    { Glossary = "glossary.md" },
+    { Templates = "templates/index.md" },
     { "Python Cheatsheet" = "resources/python-cheatsheet.md" },
     { "SQL Cheatsheet" = "resources/sql-cheatsheet.md" },
     { Books = "resources/books.md" },
     { "Tutorials & Practice" = "resources/tutorials.md" },
     { Datasets = "resources/datasets.md" },
+    { Miscellaneous = "resources/misc.md"}
   ]},
-  { Glossary = "glossary.md" },
 ]
 
 # With the "extra_css" option you can add your own CSS styling to customize
