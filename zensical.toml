@@ -95,14 +95,16 @@ nav = [
     { "Dashboard Architecture" = "visualization/dashboards.md" },
     { Tools = "visualization/tools.md" },
   ]},
-  { "Analytics Engineering" = [
+  { "Analytics Engineer" = [
     { Overview = "analytics-engineering/index.md" },
-    { Foundations = "analytics-engineering/AE-foundation.md" },
+    { Fundamentals = "analytics-engineering/AE-foundation.md" },
     { "Data Modeling" = "analytics-engineering/data-modeling.md" },
     { "ELT Process" = "analytics-engineering/process.md" },
     { dbt = "analytics-engineering/dbt.md" },
     { "Version Control" = "analytics-engineering/vcs.md" },
     { "ADLC" = "analytics-engineering/ADLC.md" },
+    { Glossary = "analytics-engineering/glossary.md" },
+    { Materials = "analytics-engineering/materials.md" },
   ]},
   { "AI for DA" = [
     { Overview = "ai-for-da/index.md" },
