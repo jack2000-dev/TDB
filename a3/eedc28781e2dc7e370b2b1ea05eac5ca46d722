@@ -1,0 +1,59 @@
+docs/dba/snippets.md
+  s_1d7052d83ff327::t_85254b3dd73f50 7-8,10-11,13-14,20-21,29,33
+AGENTS.md
+  s_1d7052d83ff327::t_8bd492349daf92 145
+  s_1d7052d83ff327::t_4e6abcbce88c76 121
+docs/de/snippets.md
+  s_1d7052d83ff327::t_43edf7a6d6d07b 16-17,25-26,29-30,35,52-53
+docs/dap/analyze.md
+  s_1d7052d83ff327::t_7f86d6f4ac20ac 193-201,204-206,209
+  s_1d7052d83ff327::t_6db9f65086dd74 192
+docs/analytics-engineering/index.md
+  s_1d7052d83ff327::t_562bfe178fdb3a 1
+README.md
+  s_1d7052d83ff327::t_d737ae115d8c0e 49
+  s_1d7052d83ff327::t_c85f4da5e9aa71 41
+docs/de/fundamentals.md
+  s_1d7052d83ff327::t_35d870c2b90cf7 103-173
+  s_1d7052d83ff327::t_08d6c7d4f2a619 50
+  s_1d7052d83ff327::t_486bc35a8203b0 74-75,80-81,97-98
+  s_1d7052d83ff327::t_3aea7b2bda4333 18-19
+  s_1d7052d83ff327::t_c72a9798927124 65
+docs/dba/case-study.md
+  s_1d7052d83ff327::t_38bd29be49849f 38-40
+  s_1d7052d83ff327::t_2fcb1591ce8b53 10
+docs/de/materials.md
+  s_1d7052d83ff327::t_720fbd37054ca0 3-10
+.claude/skills/wiki-maintainer/SKILL.md
+  s_1d7052d83ff327::t_8d279be5b4a5ad 150
+  s_1d7052d83ff327::t_b276c4d227338d 19
+  s_1d7052d83ff327::t_9142d2a23b5a60 38
+docs/dba/fundamentals.md
+  s_1d7052d83ff327::t_17c1f47fc045a3 23
+  s_1d7052d83ff327::t_282d750fb81697 36,38-40,44,46-47,50
+  s_1d7052d83ff327::t_9db56fccbbec04 62-63
+  s_1d7052d83ff327::t_e1913f6a64535e 79
+  s_1d7052d83ff327::t_fe0a611d76812d 112
+  s_1d7052d83ff327::t_e89c94d5380dbe 129,131
+  s_1d7052d83ff327::t_07489bb0264726 136
+  s_1d7052d83ff327::t_bac1ac6ab6f50e 15-16
+CLAUDE.md
+  s_1d7052d83ff327::t_8a2b62df6fb5e9 121
+  s_1d7052d83ff327::t_9ef701d645e861 145
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "a3eedc28781e2dc7e370b2b1ea05eac5ca46d722",
+  "prompts": {},
+  "sessions": {
+    "s_1d7052d83ff327": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3765cca7-accf-42a5-96a0-f6e3ea729958",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
