@@ -1,0 +1,19 @@
+uv.lock
+  s_ef8b716fb2d34c::t_5dd12dfc87a1bc 166-180
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "b8260340a77033eb5a1b7fc91036c8a2a530d189",
+  "prompts": {},
+  "sessions": {
+    "s_ef8b716fb2d34c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3e7438b2-b264-45fe-b148-7c694b57d932",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
