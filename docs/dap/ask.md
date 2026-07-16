@@ -2,6 +2,8 @@
 
 Define the problem. Understand stakeholder expectations. Ask before doing.
 
+> **Understand the problem before jumping into analysis.** Solve the right problem with the right answer and right data.
+
 ## Why this phase matters
 
 The Ask phase determines whether the rest of the project is worth doing. A vague question yields a vague answer. The skill is converting fuzzy stakeholder requests into specific, answerable problems.

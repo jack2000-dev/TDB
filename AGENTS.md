@@ -4,14 +4,15 @@ You are the maintainer of **The Data Bible (TDB)**: a Zensical-built wiki coveri
 
 ## What this site is
 
-A searchable knowledge base organized by **career role**, not by topic. The tab bar reads **Home · DBA · DE · AE · DA · Resources** — the career progression — and that order lives in `nav` in `zensical.toml`.
+A searchable knowledge base organized by **career role**, not by topic. The tab bar reads **Home · DBA · DE · AE · DA · SQL · Resources** — role tabs follow the career progression, with **SQL** as a cross-cutting topic tab used across roles — and that order lives in `nav` in `zensical.toml`.
 
 | Tab | Folder(s) | Covers |
 |-----|-----------|--------|
 | **Database Administrator** | `docs/dba/` | Indexes, partitioning, replication, views, scalability, OLTP/OLAP |
 | **Data Engineer** | `docs/de/` | ETL/ELT, ingestion, Kafka/Airflow/dbt, pipelines |
 | **Analytics Engineer** | `docs/analytics-engineering/` | Foundations, data modeling, ELT process, dbt, version control, ADLC |
-| **Data Analyst** | `dap/`, `python/`, `sql/`, `visualization/`, `ai-for-da/`, `tools/`, `soft-skills/` | Ask→Act process, cleaning, Python, SQL, viz, AI for DA, soft skills |
+| **Data Analyst** | `dap/`, `python/`, `visualization/`, `ai-for-da/`, `tools/`, `soft-skills/` | Ask→Act process, cleaning, Python, viz, AI for DA, soft skills |
+| **SQL** | `docs/sql/` | Fundamentals, optimization, snippets |
 | **Resources** | `docs/resources/`, `docs/glossary.md`, `docs/templates/` | Unified glossary, templates, cheatsheets, books, datasets |
 
 "TDB" is a **display name only** — the repo slug, `site_url`, and `repo_url` stay `DAB`.
@@ -36,16 +37,16 @@ TDB/
     ├── analytics-engineering/   # role tab — AE foundations, data modeling, ELT, dbt, VCS, ADLC
     ├── dap/                     # DA — Ask, Prepare, Process, Analyze, Share, Act
     ├── python/                  # DA
-    ├── sql/                     # DA
     ├── visualization/           # DA
     ├── ai-for-da/               # DA
     ├── tools/                   # DA
     ├── soft-skills/             # DA
+    ├── sql/                     # SQL tab — fundamentals, optimization, snippets
     ├── templates/               # Resources — DAF, DASF 2.0
     └── resources/               # Resources — books, tutorials, datasets, cheatsheets
 ```
 
-The DA folders sit at `docs/` top level but are re-nested under the **Data Analyst** tab by `nav` alone — no file moves, no URL changes. Don't "tidy" them into a `docs/da/` folder.
+The DA folders (and `sql/`, now its own **SQL** tab) sit at `docs/` top level but are re-nested under their tab by `nav` alone — no file moves, no URL changes. Don't "tidy" them into a `docs/da/` folder.
 
 ## Role section template
 
@@ -59,7 +60,7 @@ The DA folders sit at `docs/` top level but are re-nested under the **Data Analy
 | Case Study | `case-study.md` | Situation / problems / solutions. |
 | Materials | `materials.md` | Tools, community, reads. |
 
-There is **no per-role glossary page** — see [Glossary](#glossary). AE intentionally runs deeper than the template (six content pages); don't flatten it.
+There is **no per-role glossary page** — see [Glossary](#glossary). AE intentionally runs deeper than the template (six content pages); don't flatten it. The **SQL** tab isn't a role tab and keeps its own four-page shape (index, fundamentals, optimization, snippets) — don't force it into the five-page template either.
 
 ## Workflow commands
 
@@ -73,7 +74,7 @@ After any content change, run `uv run zensical build --clean`. Zero issues = shi
 
 ## Editing rules
 
-1. **Use the existing structure.** The five role tabs are the structure — don't add top-level tabs without asking. To add a sub-page, also update `nav` in `zensical.toml`.
+1. **Use the existing structure.** The five role tabs plus the SQL topic tab are the structure — don't add further top-level tabs without asking. To add a sub-page, also update `nav` in `zensical.toml`.
 2. **Every new page ends with `## References`** linking authoritative sources (official docs > peer-reviewed > textbooks > reputable blogs > random Medium posts). No bare URLs in body — use `[text](url)`.
 3. **No Obsidian wikilinks** (`[[Page]]`, `![[file.png]]`). Replace with real markdown links or inline content. Reference doc was written for Obsidian; this isn't.
 4. **No image embeds without source files.** If the original referenced `![[Screenshot.png]]`, either drop it or replace with a description + link to the source paper / docs.
@@ -142,7 +143,7 @@ The user often pastes raw unformatted text (from notes, ChatGPT, or copy-paste f
 
 ## When asked to add content
 
-1. **Pick the role tab first, then the page.** Index/partition note → `docs/dba/fundamentals.md`. Pipeline pattern → `docs/de/fundamentals.md`. dbt model → `docs/analytics-engineering/dbt.md`. SQL function → `docs/sql/` or `docs/resources/sql-cheatsheet.md`. New term → `docs/glossary.md`. Don't create unnecessary pages.
+1. **Pick the role tab (or the SQL tab) first, then the page.** Index/partition note → `docs/dba/fundamentals.md`. Pipeline pattern → `docs/de/fundamentals.md`. dbt model → `docs/analytics-engineering/dbt.md`. SQL function → `docs/sql/` or `docs/resources/sql-cheatsheet.md`. New term → `docs/glossary.md`. Don't create unnecessary pages.
 2. **Match neighbor style.** Open the surrounding page and mirror its tone, depth, and section headings.
 3. **Verify with build.** Always run `uv run zensical build --clean` and ensure "No issues found".
 4. **Update `docs/glossary.md`** if you introduce a new term — the single unified glossary, per the rules above.

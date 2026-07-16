@@ -16,7 +16,7 @@ You are the maintainer of The Data Bible (TDB). The site lives in this repo; you
 - **Deploy:** GitHub Actions → GitHub Pages on push to `main` (tags do not deploy)
 - **Naming:** "TDB" is a display name only — the repo slug, `site_url`, and `repo_url` stay `DAB`
 
-The tab bar reads **Home · Database Administrator · Data Engineer · Analytics Engineer · Data Analyst · Resources** (DBA/DE/AE/DA below is shorthand for these) — the career progression.
+The tab bar reads **Home · Database Administrator · Data Engineer · Analytics Engineer · Data Analyst · SQL · Resources** (DBA/DE/AE/DA below is shorthand for these) — role tabs follow the career progression, with **SQL** as a cross-cutting topic tab used across roles.
 
 ## Commands
 
@@ -35,7 +35,7 @@ When a user asks for a doc change, run through this in order:
 | User says | Action |
 |-----------|--------|
 | "add SQL function X" | Add row to `docs/resources/sql-cheatsheet.md` |
-| "add a page about X" | Pick the **role tab** first, then the page; create file; update the owning section's `## Pages` list (role tab index for DBA/DE/AE, or the relevant subsection index for Data Analyst) **and** `nav` |
+| "add a page about X" | Pick the **role tab** (or **SQL**) first, then the page; create file; update the owning section's `## Pages` list (role tab index for DBA/DE/AE, `sql/index.md` for SQL, or the relevant subsection index for Data Analyst) **and** `nav` |
 | "the page on X is wrong" | Read page, fix in place, verify with build |
 | "fix broken links" | Run build; address each "unresolved link reference" |
 | "add to glossary" / "add term X" | Edit `docs/glossary.md` — see [Glossary](#glossary) for the filing rules |
@@ -56,19 +56,19 @@ docs/
 ├── dap/                     # DA — ask, prepare, process, data-cleaning, analyze,
 │                            #      metrics, experimentation, share, act
 ├── python/                  # DA — eda, libraries, snippets
-├── sql/                     # DA — fundamentals, optimization, snippets
 ├── visualization/           # DA — chart-selection, design-principles, dashboards, tools
 ├── ai-for-da/               # DA — tools, prompt-framework
 ├── tools/                   # DA — techstack, git, spreadsheets
 ├── soft-skills/             # DA — stakeholders, meetings
+├── sql/                     # SQL tab — fundamentals, optimization, snippets
 ├── templates/               # Resources — DAF, DASF 2.0
 └── resources/               # Resources — books, tutorials, datasets,
                              #             python-cheatsheet, sql-cheatsheet
 ```
 
-The seven DA folders sit at `docs/` top level but are re-nested under the **Data Analyst** tab by `nav` alone. **Never move them into a `docs/da/` folder** — it changes every published URL.
+The six DA folders (and `sql/`, now its own **SQL** tab) sit at `docs/` top level but are re-nested under their tab by `nav` alone. **Never move them into a `docs/da/` folder** — it changes every published URL.
 
-If a topic doesn't fit any role tab, **ask the user** before creating a new top-level tab.
+If a topic doesn't fit any role tab, **ask the user** before creating a new top-level tab (this is how the **SQL** tab came to exist).
 
 ### 2a. Role section template
 
@@ -82,7 +82,7 @@ If a topic doesn't fit any role tab, **ask the user** before creating a new top-
 | Case Study | `case-study.md` | Situation / problems / solutions |
 | Materials | `materials.md` | Tools, community, reads |
 
-There is **no per-role glossary page**. AE intentionally runs deeper than the template — don't flatten it.
+There is **no per-role glossary page**. AE intentionally runs deeper than the template — don't flatten it. The **SQL** tab isn't a role tab and keeps its own four-page shape (index, fundamentals, optimization, snippets) — don't force it into the five-page template either.
 
 ### 2b. Glossary
 
@@ -143,11 +143,11 @@ Must end with `No issues found`. If you see any warning (unresolved link, missin
 8. **Don't rewrite working pages** for stylistic preference. Only fix what was asked.
 9. **One `#` (H1) per page** — the title. Multiple H1s break the TOC sidebar.
 10. **Never recreate per-role glossary pages.** The glossary is unified at `docs/glossary.md`.
-11. **Never move the DA folders** into `docs/da/` — they're re-nested by `nav` only; moving breaks every published URL.
+11. **Never move the DA folders** (or `sql/`) into `docs/da/` or `docs/programming-language/` — they're re-nested by `nav` only; moving breaks every published URL.
 12. **Don't touch** `site_url`, `repo_url`, or `repo_name` — TDB is a display name; the repo stays `DAB`.
 13. **Don't author new prose for role content.** Port the owner's own bible notes and lay out structure; leave a `<!-- TODO -->` where notes are missing.
 
-Adding a page means updating **three** things: the file, the `## Pages` list in the owning section's `index.md` (the role tab's index for DBA/DE/AE, or the relevant subsection's index for Data Analyst, e.g. `python/index.md`), and `nav` in `zensical.toml`.
+Adding a page means updating **three** things: the file, the `## Pages` list in the owning section's `index.md` (the role tab's index for DBA/DE/AE, `sql/index.md` for SQL, or the relevant subsection's index for Data Analyst, e.g. `python/index.md`), and `nav` in `zensical.toml`.
 
 ## Markdown extensions enabled
 
@@ -178,7 +178,7 @@ uv run zensical build --clean
 uv run zensical serve
 ```
 
-`zensical.toml` nav format — role tabs nest one level:
+`zensical.toml` nav format — role tabs (and the **SQL** topic tab) nest one level:
 
 ```toml
 { "Database Administrator" = [

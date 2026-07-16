@@ -6,20 +6,16 @@
 - [StatQuest YouTube](https://www.youtube.com/@statquest) — best stats explanations on the internet
 - [3Blue1Brown](https://www.3blue1brown.com/) — visual math (linear algebra, probability)
 - [Seeing Theory](https://seeing-theory.brown.edu/) — interactive probability/stats
-- [SQLZoo](https://sqlzoo.net/) — SQL exercises
 - [Computerphile](https://www.youtube.com/@Computerphile) — computing concepts explained
 
-## Certifications
-
-- [Google Data Analytics Certificate (Coursera)](https://www.coursera.org/professional-certificates/google-data-analytics) — beginner, free with audit
-- [Google Advanced Data Analytics Certificate](https://www.coursera.org/professional-certificates/google-advanced-data-analytics) — intermediate; Python, ML
-- [IBM Data Analyst Professional](https://www.coursera.org/professional-certificates/ibm-data-analyst)
-- [Tableau Desktop Specialist](https://www.tableau.com/learn/certification/desktop-specialist)
-- [Microsoft DA Associate (PL-300)](https://learn.microsoft.com/en-us/credentials/certifications/data-analyst-associate/)
-- [AWS Data Analytics Specialty](https://aws.amazon.com/certification/certified-data-analytics-specialty/)
-- [GCP Professional Data Engineer](https://cloud.google.com/learn/certification/data-engineer)
 
 ## Topical learning
+
+### Database Administrator
+
+- [Fundamentals of Database Administration](https://www.youtube.com/watch?v=NuwDF6kzONs&list=PLDYqU5RH_aX1hdZ32WfXklJlkh-H74juv) - By Brent Ozar
+- [SmartPostgres](https://www.youtube.com/@SmartPostgres) - By Brent Ozar but focus on PostgreSQL
+- [Decomplexify](https://www.youtube.com/@decomplexify) - Explain complex simply
 
 ### Data Engineering
 
@@ -65,7 +61,7 @@
 - [DataCamp Projects](https://www.datacamp.com/projects)
 - [SQL Noir](https://www.sqlnoir.com/) — SQL puzzle games
 - [SQL Zoo](https://sqlzoo.net/) — SQL basics practice
-- [Neetcode](https://neetcode.io/) — tech interview prep
+
 
 ## Portfolio Evaluation Checklist
 
@@ -84,5 +80,15 @@
 ```
 
 
-## Interview
+## Interview Prep
 
+- [Neetcode](https://neetcode.io/) — tech interview prep
+
+## Certifications
+
+- [Google Data Analytics Certificate (Coursera)](https://www.coursera.org/professional-certificates/google-data-analytics) — beginner, free with audit
+- [Google Advanced Data Analytics Certificate](https://www.coursera.org/professional-certificates/google-advanced-data-analytics) — intermediate; Python, ML
+- [Tableau Desktop Specialist](https://www.tableau.com/learn/certification/desktop-specialist)
+- [Microsoft DA Associate (PL-300)](https://learn.microsoft.com/en-us/credentials/certifications/data-analyst-associate/)
+- [AWS Data Analytics Specialty](https://aws.amazon.com/certification/certified-data-analytics-specialty/)
+- [GCP Professional Data Engineer](https://cloud.google.com/learn/certification/data-engineer)

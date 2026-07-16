@@ -91,12 +91,6 @@ nav = [
       { Libraries = "python/libraries.md" },
       { Snippets = "python/snippets.md" },
     ]},
-    { SQL = [
-      { Overview = "sql/index.md" },
-      { Fundamentals = "sql/fundamentals.md" },
-      { Optimization = "sql/optimization.md" },
-      { Snippets = "sql/snippets.md" },
-    ]},
     { Visualization = [
       { Overview = "visualization/index.md" },
       { "Chart Selection" = "visualization/chart-selection.md" },
@@ -120,6 +114,13 @@ nav = [
       { Stakeholders = "soft-skills/stakeholders.md" },
       { Meetings = "soft-skills/meetings.md" },
     ]},
+  ]},
+  { SQL = [
+    { Overview = "sql/index.md" },
+    { Fundamentals = "sql/fundamentals.md" },
+    { Optimization = "sql/optimization.md" },
+    { Snippets = "sql/snippets.md" },
+    { "Database Engine" = "sql/database-engine.md"}
   ]},
   { Resources = [
     { Overview = "resources/index.md" },

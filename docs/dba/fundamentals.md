@@ -4,7 +4,7 @@
 
 ### Clustered Index and WHERE Clause
 
-![ClusteredIndex](/assets/images/ClusteredIndex_8KB_page.png){center}
+![ClusteredIndex](../assets/images/ClusteredIndex_8KB_page.png)
 
 - **Clustered Index -> Id table (PK, int, not null):** stored 8KB pages (8,192 bytes) in a B-tree structure, which is efficient for range queries and lookups.
 - The more you store cluster index the more it will cause performace problem later on, so you should only store cluster index on the column that you will use to filter the data most of the time.
@@ -38,7 +38,7 @@
 
 ### Non-clustered Indexes, Seeks vs Scans
 
-![ClusteredIndex](/assets/images/Non-ClusteredIndex.png){center}
+![Non-clustered index](../assets/images/Non-ClusteredIndex.png)
 
 - Stored in order we want, include the fields we want
 - Literally a copy of the table
