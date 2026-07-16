@@ -1,0 +1,14 @@
+docs/resources/tutorials.md
+  h_0b5caf7ef38889 19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "a441e803944cbcacd48db00c63b76ae31a910d95",
+  "prompts": {},
+  "humans": {
+    "h_0b5caf7ef38889": {
+      "author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
