@@ -1,0 +1,75 @@
+zensical.toml
+  s_5406ca3dd6eac8::t_05455ed899b319 119-122,124
+  h_0b5caf7ef38889 123
+  s_5406ca3dd6eac8::t_d9377f384af270 118
+docs/index.md
+  h_0b5caf7ef38889 3
+  s_5406ca3dd6eac8::t_c07ef83dc901c2 11
+  s_5406ca3dd6eac8::t_7deb62b2009fee 12
+.agents/skills/wiki-maintainer/SKILL.md
+  s_5406ca3dd6eac8::t_6129d9ca8d4dd3 85
+  s_5406ca3dd6eac8::t_e08a92620dd5c3 38
+  s_5406ca3dd6eac8::t_5a599b497377ff 19
+  s_5406ca3dd6eac8::t_427a01071cbef5 69,71
+  s_5406ca3dd6eac8::t_5f0e123581e50f 146
+  s_5406ca3dd6eac8::t_f7bdabdd147d41 181
+  s_5406ca3dd6eac8::t_ca1197feb3282b 150
+  s_5406ca3dd6eac8::t_a6b632d7494e2f 63
+docs/dba/fundamentals.md
+  s_5406ca3dd6eac8::t_a6df6995e97646 41
+  s_5406ca3dd6eac8::t_b60bff503679a7 7
+.claude/skills/wiki-maintainer/SKILL.md
+  s_5406ca3dd6eac8::t_667a0c3e254ecf 146
+  s_5406ca3dd6eac8::t_e8128a537309b2 150
+  s_5406ca3dd6eac8::t_8fc425a57f1a35 85
+  s_5406ca3dd6eac8::t_16ebc9593736b1 38
+  s_5406ca3dd6eac8::t_1da7d62003e702 63
+  s_5406ca3dd6eac8::t_9fa27c4d25ec51 19
+  s_5406ca3dd6eac8::t_3222b44e3d9083 69,71
+  s_5406ca3dd6eac8::t_5b03d8336afd6f 181
+docs/resources/tutorials.md
+  h_0b5caf7ef38889 14-19,64,83,85
+docs/sql/database-engine.md
+  h_0b5caf7ef38889 1-7
+CLAUDE.md
+  s_5406ca3dd6eac8::t_033be7bd1e0f34 61
+  s_5406ca3dd6eac8::t_8ff28a6a48c4dc 14
+  s_5406ca3dd6eac8::t_c2e657467fca0b 47
+  s_5406ca3dd6eac8::t_0b63bb5c221748 15
+  s_5406ca3dd6eac8::t_76243e9fb1c1b8 75
+  s_5406ca3dd6eac8::t_609936ff4802cc 42
+  s_5406ca3dd6eac8::t_1d1aefa61108f3 7
+  s_5406ca3dd6eac8::t_7faa47ff052693 144
+docs/dap/ask.md
+  h_0b5caf7ef38889 5-6
+AGENTS.md
+  s_5406ca3dd6eac8::t_a761f1802bf297 63
+  s_5406ca3dd6eac8::t_ad1d239b57d31e 146
+  s_5406ca3dd6eac8::t_5616b98bd60257 7
+  s_5406ca3dd6eac8::t_1cba9511c406c9 14
+  s_5406ca3dd6eac8::t_8a4f823a8458d7 15
+  s_5406ca3dd6eac8::t_283518dd81bcae 44
+  s_5406ca3dd6eac8::t_663a58832491aa 77
+  s_5406ca3dd6eac8::t_e4a42d3ba60a49 49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "48aa9cefe4f65481c8ae9cd8104ba2cc069f3fc1",
+  "prompts": {},
+  "humans": {
+    "h_0b5caf7ef38889": {
+      "author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_5406ca3dd6eac8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec1f69bd-ae03-42fb-b0a9-23c650f410b1",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
