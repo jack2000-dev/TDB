@@ -2,7 +2,7 @@
 
 ## Tools
 
-<!-- TODO: tools list -->
+- [PySpark Cheatsheet](https://www.sparkplayground.com/pyspark-cheat-sheet)
 
 ## Community
 
