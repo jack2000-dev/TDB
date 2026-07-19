@@ -279,6 +279,20 @@ Creating two separate maintenance plans to ensure robust protection:
 ### Monitoring
 Users are encouraged to verify the performance of these jobs by checking the **duration history** after they have run. If a job takes an excessively long time, it may be necessary to have discussions with management regarding hardware limitations or task scheduling.
 
+## sp_configure
+
+Configuring *SQL Server* to improve performance and reliability. While default settings are generally sufficient, but for VM environment we should peak into `sp_configure`.
+
+### **Key Configuration Recommendations**
+- **Maximum Degree of Parallelism (MAXDOP):** Avoid letting a single query consume all CPU cores. For virtual machines, calculate an appropriate setting by dividing total cores by the number of "ugly" queries you want running simultaneously, with 8 being a recommended maximum
+- **Backup Checksum Default:** Enable this (available in *SQL Server 2014* and newer) to ensure data is checked for corruption during backups, as the default setting skips this validation
+- **Max Server Memory:** Limit *SQL Server* to 90% of total system RAM to ensure the OS and other applications remain stable under memory pressure
+
+### **Additional Settings and Considerations**
+- **Cost Threshold for Parallelism:** The default value of 5 is often too low, causing unnecessary parallel execution for small queries
+- **Backup Compression:** Enabling this as a default ensures backups are stored efficiently
+- **Plan Cache Impact:** Be aware that changing settings like *MAXDOP*, *Cost Threshold*, and *Max Server Memory* (especially lowering it) will typically clear the *plan cache*, which may impact performance temporarily
+
 ## Database Indexes
 
 Indexes are database objects that enhance the speed of data retrieval operations. They function by creating a quick lookup mechanism for data based on one or more columns in a table, much like an index in a book helps you find information quickly. Namely, indexes reduce the amount of disk I/O needed to access data, thereby boosting overall database performance.
