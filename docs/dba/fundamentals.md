@@ -253,8 +253,8 @@ How to do a one-time restore (**Note: read the docs due to feature changes**)
 - **Disaster Recovery & Automation:** When a server is completely destroyed, rebuilding from scratch is often preferred over simple restoration. The instructor advocates for using tools like **PowerShell** and **dbatools** to automate the recreation of logins, agent jobs, and permissions, which are essential for production DBAs to master
 
 ### Important Considerations:
-* **High Availability Gotchas:** Features like *Always On Availability Groups* or *replication* are broken by restores and require manual reconfiguration (8:46 - 11:45).
-* **Preparation:** Testing and practice are vital. Using tools like *sp_Blitz* helps maintain an awareness of your server configuration, making it easier to recreate the environment during an emergency (29:36 - 30:03).
+* **High Availability Gotchas:** Features like *Always On Availability Groups* or *replication* are broken by restores and require manual reconfiguration
+* **Preparation:** Testing and practice are vital. Using tools like *sp_Blitz* helps maintain an awareness of your server configuration, making it easier to recreate the environment during an emergency
 
 ## SysAdmin & Developer
 
