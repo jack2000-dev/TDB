@@ -131,6 +131,7 @@ nav = [
     { Books = "resources/books.md" },
     { "Tutorials & Practice" = "resources/tutorials.md" },
     { Datasets = "resources/datasets.md" },
+    { "Database Internal" = "resources/database-internal.md" },
     { Miscellaneous = "resources/misc.md"}
   ]},
 ]
