@@ -1,0 +1,14 @@
+zensical.toml
+  h_0b5caf7ef38889 134
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "5cb07972a807bef6635ed66a3afb81dca17d72c0",
+  "prompts": {},
+  "humans": {
+    "h_0b5caf7ef38889": {
+      "author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
