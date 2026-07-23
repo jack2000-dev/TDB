@@ -1,0 +1,14 @@
+docs/dba/fundamentals.md
+  h_0b5caf7ef38889 139
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "631c074fea7a20cd5b6122bc87d60505f296c5c2",
+  "prompts": {},
+  "humans": {
+    "h_0b5caf7ef38889": {
+      "author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
