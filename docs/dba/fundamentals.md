@@ -136,7 +136,7 @@ Commonly used products:
 3rd party products backup servers, files, and databases by taking periodic snapshots with VSS (Volume Snapshot Service)
 
 - VSS snapshot is best for 
-    - Standalone servers with <35 databases
+    - Standalone servers with <=35 databases
     - Third party apps (accounting, HR, infrastructure)
 - Configure the snapshot software so that it's application-aware and inactivate SQL Server's writes
 - The more we want 0 data loss, the more frequent we need to backup
